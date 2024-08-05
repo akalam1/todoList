@@ -61,12 +61,54 @@ form button:hover{
   }
 
   .todoDiv{
+    font-size: 1.5rem;;
     color: black;
     background: white;
     margin: .4rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1s ease;
+    transition: all .5s ease;
   }
+
+  .todoDiv li{
+    flex: 1;
+  }
+
+  .completeBtn, 
+  .deleteBtn{
+
+    font-size: 1rem;
   
+   color: White;
+    padding: .8rem;
+    border: none;
+    cursor: pointer;
+
+
+  }
+  .completeBtn{
+    background: rgb(11, 212, 162);
+  }
+
+  .deleteBtn{
+    background-color: rgb(225, 37, 37);
+
+  }
+  .todo{
+    padding: 0rem 1rem;
+  }
+
+  /* making the actual button class  of the delete/complete not clickable  */
+  .fa-sharp, .fa-trash{
+    pointer-events: none;
+
+  }
+
+  /* //complete button  */
+
+  .completed{
+    text-decoration: line-through;
+    opacity: .5;
+
+  }

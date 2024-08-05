@@ -9,6 +9,8 @@ const todoList = document.querySelector(".todo-list");
 
 // event listener 
 todoBtn.addEventListener('click', addTodo )
+todoList.addEventListener('click', deleteTodo)
+
 
 
    
@@ -47,6 +49,38 @@ todoDiv.appendChild(deleteBtn);
 
 
 }
+
+//delete todolist
+
+function deleteTodo(event){
+
+    const itemLocation = event.target;
+    console.log(itemLocation)
+
+    // console.log("Deleted ")
+    // console.log(event.target)
+
+
+    
+  
+    if (itemLocation.classList [0] === "deleteBtn"){
+        //lets delete the main div, that way it wont just 
+        //delete the button rather whole text
+        const toDo= itemLocation.parentElement;
+        toDo.remove();
+    }
+
+    //complete button
+
+    if (itemLocation.classList[0] === "completeBtn"){
+        const toDo = itemLocation.parentElement;
+        toDo.classList.toggle("completed")
+        console.log(toDo)
+    }
+
+}
+
+
 
 
 
