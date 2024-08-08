@@ -1,15 +1,16 @@
 
-//grabbing all the classes 
+//grabbing all the Selector/head div
 const todoInput = document.querySelector(".todo-input");
 const todoBtn = document.querySelector(".todo-button");
 const todoContainer = document.querySelector(".todo-container");
 const todoList = document.querySelector(".todo-list");
 
-
+const filterOption = document.querySelector(".filter-todo");
 
 // event listener 
-todoBtn.addEventListener('click', addTodo )
-todoList.addEventListener('click', deleteTodo)
+todoBtn.addEventListener('click', addTodo );
+todoList.addEventListener('click', deleteTodo);
+filterOption.addEventListener('click', filtertodo )
 
 
 
@@ -65,7 +66,7 @@ function deleteTodo(event){
         //delete the button rather whole text
         const toDo= itemLocation.parentElement;
 
-        console.log(toDo)
+        // console.log(toDo)
 
         //adding animation to the deletebutton
         //lets add a class to the tab so we can add anumation
@@ -90,5 +91,52 @@ function deleteTodo(event){
 
 
 
+
+//filtering
+
+function filtertodo(e){
+    // console.log(e.target)
+
+    const todos = todoList.childNodes;
+// console.log(filters)
+
+//looping over to do list
+todos.forEach(function(todo){
+
+    // here were value we clicked in either "all, completed or incomeoleted "
+    // console.log(e.target.value)
+    switch(e.target.value){
+        case "all":
+            todo.style.display = "flex";
+            break;
+
+            case "completed":
+                if (todo.classList.contains('completed')){
+
+                        todo.style.display = 'flex';
+                }else{
+
+
+                    todo.style.display = 'none';
+
+                }
+                break;
+
+            case "incomplete":
+                if (!todo.classList.contains('completed')){
+
+                    todo.style.display = 'flex';
+            }else{
+
+
+                todo.style.display = 'none';
+
+            }
+            break;
+            
+         }
+    });
+ }
+   
 
 
