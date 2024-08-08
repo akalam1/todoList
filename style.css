@@ -112,3 +112,57 @@ form button:hover{
     opacity: .5;
 
   }
+
+  .fall{
+    transform: translateY(10rem) rotateZ(25deg);
+
+    opacity: 0;
+  }
+
+
+  /*CUSTOM SELECTOR */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: none;
+
+  /* box-shadow: none;
+  border: 0 !important;
+  background-image: none; */
+}
+
+
+.selectDiv{
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+select{
+  color:black;
+  width: 10rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+
+.selectDiv::after {
+  content: "\25BC";
+  position: absolute;
+  background: #ff6f47;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  cursor: pointer;
+  pointer-events: none;
+
+
+}
+
+.selectDiv:hover::after{
+  background: green;
+}
+

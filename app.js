@@ -55,19 +55,27 @@ todoDiv.appendChild(deleteBtn);
 function deleteTodo(event){
 
     const itemLocation = event.target;
-    console.log(itemLocation)
+    // console.log(itemLocation)
 
     // console.log("Deleted ")
     // console.log(event.target)
 
-
-    
-  
     if (itemLocation.classList [0] === "deleteBtn"){
         //lets delete the main div, that way it wont just 
         //delete the button rather whole text
         const toDo= itemLocation.parentElement;
+
+        console.log(toDo)
+
+        //adding animation to the deletebutton
+        //lets add a class to the tab so we can add anumation
+        toDo.classList.add("fall");
+
+        //remove the div after animation 
+        toDo.addEventListener("transitionend",function(){
         toDo.remove();
+
+        })
     }
 
     //complete button
