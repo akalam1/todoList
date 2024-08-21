@@ -152,4 +152,141 @@ todos.forEach(function(todo){
          }
     });
  }
+
+
+
+
+ 
+
+
+
+//LOCAL STORAGE 
+
+function savetodolocalStorage(todo){
+    let todos;
+        //fisrt chgeck if the local already has date existed 
+        //so basical its checking if the data is emty, if it is 
+        // it will save a emty array
+        if (localStorage.getItem('todos') === null){
+            localStorage.setItem('todos', '[]');
+    
+        }else {
+            
+        //and now lets get that empty array and push the actual data 
+    
+        todos = JSON.parse(localStorage.getItem('todos'));
+    
+        }
+    
+    
+        //now push the new data 
+        todos.push(todo);
+    
+        // now save the data old+new to local storage 
+        localStorage.setItem('todos', JSON.stringify(todos));
+    
+    
+    }
+    // localStorage.clear();
+    
+    
+    
+    
+    
+    //getting the data from local storage 
+    
+    function getDataLocalStorage(){
+    let todos;
+        if (localStorage.getItem('todos') === null){
+            localStorage.setItem('todos', '[]');
+    
+        }else {
+            
+        //and now lets get that empty array and push the actual data 
+    
+        todos = JSON.parse(localStorage.getItem('todos'));
+    
+        }
+    
+        //now lets set  all the divs todo content from the storage and display ity on the UI
+    
+        todos.forEach(function(todo){
+    
+            
+        // now lets add given input to a todoList 
+        const todoDiv = document.createElement("div");
+        todoDiv.classList.add("todoDiv");
+        const todoItem = document.createElement("li");
+        todoItem.classList.add("todo");
+        todoItem.innerText = todo;
+    
+        // console.log("Todo Input: " + todoInput.value)
+    
+        todoInput.value = " ";
+        todoDiv.appendChild(todoItem);
+    
+    //CompletedButton
+    
+    const completeBtn = document.createElement("button")
+    completeBtn.innerHTML = `<i class="fa-sharp fa-solid fa-circle-check"></i>`;
+    completeBtn.classList.add("completeBtn");
+    todoDiv.appendChild(completeBtn);
+    
+    //DeleteButton
+    
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.innerHTML =  `<i class="fas fa-trash"></i>`;
+    todoDiv.appendChild(deleteBtn);
+    
+        todoList.appendChild(todoDiv);
+    
+    
+        })
+    
+    }
+    
+    
+    
+    
+    
+    
+    //delete the data from local storage 
+    
+    
+    function deletefromLocal(todo){
+        let todos;
+        if (localStorage.getItem('todos') === null){
+            localStorage.setItem('todos', '[]');
+    
+        }else {
+            
+        //and now lets get that empty array and push the actual data 
+    
+        todos = JSON.parse(localStorage.getItem('todos'));
+    
+        }
+    
+        // console.log(todo.children[0].innerText)
+    
+    // lets get the inner text of the todo, onced clicked on "delete"
+    // so we can delete that from the local storage 
+    
+    const indexoftodo = todo.children[0].innerText;
+    
+    // console.log(todos);
+    //gettig the index of that string and then deleteing
+    todos.splice(todos.indexOf(indexoftodo),1);
+    
+    //after splicing it 
+    // console.log("After splicing it ");
+    
+    // updating the string uber deletion
+    localStorage.setItem("todos", JSON.stringify(todos));
+    // console.log(todos);
+    
+    }
+    
+    
+    
    
