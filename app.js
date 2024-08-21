@@ -100,3 +100,56 @@ function deleteTodo(event){
     }
 
 }
+
+
+
+
+
+
+
+//filtering
+
+function filtertodo(e){
+    // console.log(e.target)
+
+    const todos = todoList.childNodes;
+// console.log(filters)
+
+//looping over to do list
+todos.forEach(function(todo){
+
+    // here were value we clicked in either "all, completed or incomeoleted "
+    // console.log(e.target.value)
+    switch(e.target.value){
+        case "all":
+            todo.style.display = "flex";
+            break;
+
+            case "completed":
+                if (todo.classList.contains('completed')){
+
+                        todo.style.display = 'flex';
+                }else{
+
+
+                    todo.style.display = 'none';
+
+                }
+                break;
+
+            case "incomplete":
+                if (!todo.classList.contains('completed')){
+
+                    todo.style.display = 'flex';
+            }else{
+
+
+                todo.style.display = 'none';
+
+            }
+            break;
+            
+         }
+    });
+ }
+   
